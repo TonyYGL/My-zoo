@@ -1,0 +1,39 @@
+.logo {
+    position: relative;
+    left: 20px;
+}
+
+.ui-accordion .ui-accordion-content {
+    padding: 1em 1em;
+}
+
+.jumbotron {
+  /*background-image: url("./img/jumbotron_bg.jpg");*/
+  box-shadow:0px 3px #dee2e6;
+  padding: 1rem 1rem;
+  background-color: white;
+}
+
+#kiki {
+    cursor: pointer;
+}
+
+.ui-state-active {
+    background: #ea7351
+}
+
+.ui-state-hover:hover {
+    animation-duration: .3s;
+    animation-name: menuAnimation;
+}
+
+#preview {
+    width: 200px;
+    height: 200px;
+}
+
+@keyframes menuAnimation {
+    20%{top:.2em;}
+    50%{top:.5em;}
+    80%{top:.2em;}
+}
