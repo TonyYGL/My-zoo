@@ -22,18 +22,18 @@
     background: #ea7351
 }
 
-.ui-state-hover:hover {
+/*.ui-state-hover:hover {
     animation-duration: .3s;
     animation-name: menuAnimation;
-}
+}*/
 
 #preview {
     width: 200px;
     height: 200px;
 }
 
-@keyframes menuAnimation {
+/*@keyframes menuAnimation {
     20%{top:.2em;}
     50%{top:.5em;}
     80%{top:.2em;}
-}
+}*/

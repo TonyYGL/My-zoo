@@ -3,7 +3,6 @@ package com.example.petproject.po;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity

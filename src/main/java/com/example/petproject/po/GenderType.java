@@ -1,7 +1,5 @@
 package com.example.petproject.po;
 
-import lombok.Data;
-
 import java.util.Arrays;
 
 public enum GenderType {

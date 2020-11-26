@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -27,14 +28,14 @@ public class ThymeleafController {
     private UserService userService;
 
     @RequestMapping("/index")
-    public String index(Model model) {
+    public String index(Model model, HttpSession session) {
         model.addAttribute("menu", menuService.getMenu(1, 2));
         return "index";
     }
 
     @RequestMapping("/menu/userInfo")
     public String userInfo(Model model) {
-        UserVo userVo = userService.findUserInfo("KKK", "KKK");
+        UserVo userVo = userService.findById(1);
         model.addAttribute("userVo", userVo);
         return "menu/userInfo";
     }

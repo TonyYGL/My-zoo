@@ -1,11 +1,9 @@
 $(function() {
-
     $("#imgInput").change(function() {
       readURL(this);
     });
 
     $("#submitBtn").click(function (event) {
-//      event.preventDefault();
       imgUpload();
     });
 })

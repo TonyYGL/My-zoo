@@ -1,8 +1,6 @@
 package com.example.petproject.controller;
 
-import com.example.petproject.service.ImageFileService;
-import com.example.petproject.service.MailService;
-import com.example.petproject.service.PetService;
+import com.example.petproject.service.*;
 import com.example.petproject.vo.PetVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +21,12 @@ public class ApiRestController {
     @Autowired
     private MailService mailService;
 
+    @Autowired
+    private ValidCodeService validCodeService;
+
+    @Autowired
+    private UserService userService;
+
     @GetMapping("/getPetList")
     public List<PetVo> findPetsByOwnerId(@RequestParam int ownerId) {
         return petService.findByOwnerId(ownerId);
@@ -36,5 +40,16 @@ public class ApiRestController {
     @GetMapping("/sendCodeMail")
     public void sendCodeMail(@RequestParam String mail) {
         mailService.sendValidCodeMail(mail);
+    }
+
+    @PostMapping("/validCode")
+    public String validCode(@RequestParam String code) {
+        return validCodeService.validCode(code);
+    }
+
+    @PostMapping("/changePassword")
+    public boolean changePassword(@RequestParam String password1, @RequestParam String password2) {
+        System.out.println("password1 = " + password1 + " ,password2 = " + password2);
+        return userService.changePassword(password1, password2);
     }
 }
