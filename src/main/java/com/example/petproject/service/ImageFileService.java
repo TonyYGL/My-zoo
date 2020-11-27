@@ -37,22 +37,23 @@ public class ImageFileService {
     }
 
     @Transactional
-    public String saveImage(MultipartFile uploadfile) {
+    public String saveImage(MultipartFile[] uploadfiles) {
+        for (MultipartFile uploadFile : uploadfiles) {
+            if (!uploadFile.isEmpty()) {
+                String originalName = uploadFile.getOriginalFilename();
+                String fileType = originalName.substring(originalName.lastIndexOf("."));
+                String newFileName = insertImageRecord(1, originalName);
 
-        if (!uploadfile.isEmpty()) {
-            String originalName = uploadfile.getOriginalFilename();
-            String fileType = originalName.substring(originalName.lastIndexOf("."));
-            String newFileName = insertImageRecord(1, originalName);
-
-            File file = new File(IMAGE_PATH + newFileName + "." + fileType);
-            try (FileOutputStream fileOutputStream = new FileOutputStream(file)) {
-                fileOutputStream.write(uploadfile.getBytes());
-                fileOutputStream.flush();
-            } catch (Exception e) {
-                file.delete();
-                e.printStackTrace();
-                logger.error("upload " + uploadfile.getOriginalFilename() + " failed, " + e.getMessage());
-                return UPLOAD_FAIL;
+                File file = new File(IMAGE_PATH + newFileName + "." + fileType);
+                try (FileOutputStream fileOutputStream = new FileOutputStream(file)) {
+                    fileOutputStream.write(uploadFile.getBytes());
+                    fileOutputStream.flush();
+                } catch (Exception e) {
+                    file.delete();
+                    e.printStackTrace();
+                    logger.error("upload " + uploadFile.getOriginalFilename() + " failed, " + e.getMessage());
+                    return UPLOAD_FAIL;
+                }
             }
         }
         return UPLOAD_SUCCESS;

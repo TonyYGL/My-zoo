@@ -2,6 +2,7 @@ package com.example.petproject.service;
 
 import com.example.petproject.po.UserPo;
 import com.example.petproject.repository.UserRepository;
+import com.example.petproject.util.PasswordUtil;
 import com.example.petproject.util.UserMapper;
 import com.example.petproject.vo.UserVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,9 @@ public class UserService {
 
     @Autowired
     private UserMapper userMapper;
+
+    @Autowired
+    private PasswordUtil passwordUtil;
 
     public UserVo findById(long id) {
         UserPo userPo = userRepository.findById(id).orElse(null);
@@ -34,7 +38,7 @@ public class UserService {
             Optional<UserPo> optionalUserPo = userRepository.findById(1L);
             if (optionalUserPo.isPresent()) {
                 UserPo userPo = optionalUserPo.get();
-                userPo.setPassword(password);
+                userPo.setPassword(passwordUtil.generateSecurePassword(password));
                 userRepository.save(userPo);
                 result = true;
             }

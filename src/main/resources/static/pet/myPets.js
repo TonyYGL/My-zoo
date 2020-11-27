@@ -1,15 +1,35 @@
 $(function() {
     $("#imgInput").change(function() {
+      $("#previewImages").html(""); // 清除預覽
       readURL(this);
     });
 
     $("#submitBtn").click(function (event) {
-      imgUpload();
+      imageUpload();
     });
 })
 
-let imgUpload = function() {
-    let contextPath = $("meta[name='ctx']").attr("content");
+var readURL = function(input) {
+    if (input.files && input.files.length > 0) {
+        for (let i = 0; i < input.files.length; i++) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                var box = $("<a class='box' data-lightbox='roadtrip' style='display:none'>").attr('href', e.target.result);
+                var img = $("<img width='150' height='150' style='margin: 2px;'>").attr('src', e.target.result);
+                var lightbox = box.append(img);
+                $("#previewImages").append(lightbox);
+                $('.box').show();
+                $('#submitBtn').text("上傳照片共" + input.files.length + "張")
+                $('#submitBtn').show();
+            }
+            reader.readAsDataURL(input.files[i]);
+        }
+    } else {
+        $('#submitBtn').hide();
+    }
+}
+
+var imageUpload = function() {
     var form = $('#imgForm')[0];
     var data = new FormData(form);
     var file = data.get("files");
@@ -35,27 +55,9 @@ let imgUpload = function() {
           $("#submitBtn").prop("disabled", false);
         }
     })
-
-
-}
-
-let readURL = function(input) {
-  if (input.files && input.files[0]) {
-    var reader = new FileReader();
-    reader.onload = function(e) {
-      $('#preview').attr('href', e.target.result);
-      $('#previewImg').attr('src', e.target.result);
-    }
-    reader.readAsDataURL(input.files[0]); // convert to base64 string
-    $('#preview').show();
-    $('#submitBtn').show();
-  } else {
-    $('#preview').hide();
-    $('#submitBtn').hide();
-  }
 }
 
 lightbox.option({
-  'resizeDuration': 500,
+  'resizeDuration': 100,
   'wrapAround': true,
 })

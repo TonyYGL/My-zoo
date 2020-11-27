@@ -33,8 +33,8 @@ public class ApiRestController {
     }
 
     @PostMapping("/imgUpload")
-    public String imgUpload(@RequestParam("files") MultipartFile uploadfiles) {
-        return  imageFileService.saveImage(uploadfiles);
+    public String imgUpload(@RequestParam("files") MultipartFile[] uploadfiles) {
+        return imageFileService.saveImage(uploadfiles);
     }
 
     @GetMapping("/sendCodeMail")
@@ -49,7 +49,6 @@ public class ApiRestController {
 
     @PostMapping("/changePassword")
     public boolean changePassword(@RequestParam String password1, @RequestParam String password2) {
-        System.out.println("password1 = " + password1 + " ,password2 = " + password2);
         return userService.changePassword(password1, password2);
     }
 }

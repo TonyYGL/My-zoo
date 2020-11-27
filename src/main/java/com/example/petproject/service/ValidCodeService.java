@@ -16,9 +16,7 @@ public class ValidCodeService {
     public String validCode(String inputCode) {
         String result = "驗證成功";
         ValidCodeBean validCodeBean = (ValidCodeBean) httpSession.getAttribute("code");
-        System.out.println("validCodeBean = " + validCodeBean);
         if (validCodeBean.getExpireTime().isBefore(LocalDateTime.now())) {
-            System.out.println("驗證碼過期");
             result = "驗證碼過期，請重新獲取驗證碼";
         } else {
             if (!validCodeBean.getCode().equals(inputCode)) {
@@ -26,7 +24,6 @@ public class ValidCodeService {
                 result = "驗證失敗";
             }
         }
-        System.out.println("result = " + result);
         return result;
     }
 }

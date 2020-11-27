@@ -61,3 +61,5 @@ spring:
     port: 6379
     database: 0
     timeout: 0
+
+salt : NpaPl3cxKx

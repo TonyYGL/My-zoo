@@ -24,7 +24,34 @@ $(function() {
             $(this).accordion("refresh");
         }
     });
+    loadUserInfoPage(); //初始頁面
 });
+const contextPath = $("meta[name='ctx']").attr("content");
+
+var goto = function(element) {
+    let href = element.getAttribute("href");
+    $.ajax({
+      url: href,
+      success: function(data) {
+        $("#content").html(data);
+      },
+      error: function(data) {
+        $("#content").html(data.responseText);
+      },
+      dataType: "html"
+    });
+}
+
+var loadUserInfoPage = function() {
+    $.ajax({
+      url: contextPath + "/menu/myPets",
+      success: function(data) {
+        $("#content").html(data);
+      },
+      dataType: "html"
+    });
+}
+
 
 
 

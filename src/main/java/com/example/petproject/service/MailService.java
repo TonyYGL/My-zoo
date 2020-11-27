@@ -31,7 +31,7 @@ public class MailService {
             helper.setTo(mail);
             helper.setSubject("My Zoo 修改密碼通知信");
 
-            String content = "<html><body><p>請於五分鐘內驗證此驗證碼</p><h4>code</h4><small>提醒您：此為系統發送信函請勿直接回覆此信。</small></body></html>";
+            String content = "<html><body><p>此驗證碼將於五分鐘失效</p><h4>code</h4><small>提醒您：此為系統發送信函請勿直接回覆此信。</small></body></html>";
             String code = getRandomCode();
             setValidCode(code);
             content = content.replaceFirst("code", code);
