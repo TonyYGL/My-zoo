@@ -1,3 +1,7 @@
 .lb-close {
     display: none!important
 }
+
+.btn {
+    padding: 0px 12px;
+}

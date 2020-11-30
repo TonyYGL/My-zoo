@@ -19,7 +19,7 @@ var readURL = function(input) {
                 var lightbox = box.append(img);
                 $("#previewImages").append(lightbox);
                 $('.box').show();
-                $('#submitBtn').text("上傳照片共" + input.files.length + "張")
+                $('#submitBtn > i').text("上傳照片共" + input.files.length + "張")
                 $('#submitBtn').show();
             }
             reader.readAsDataURL(input.files[i]);
@@ -33,8 +33,8 @@ var imageUpload = function() {
     var form = $('#imgForm')[0];
     var data = new FormData(form);
     var file = data.get("files");
-
     $("#submitBtn").prop("disabled", true);
+
     $.ajax({
         type: "POST",               //使用POST傳輸,檔案上傳只能用POST
         enctype: 'multipart/form-data', //將資料加密傳輸 檔案上傳一定要有的屬性
@@ -51,7 +51,6 @@ var imageUpload = function() {
         },
         error: function (e) {
           alert(e);
-          console.log(e);
           $("#submitBtn").prop("disabled", false);
         }
     })
