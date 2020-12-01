@@ -51,16 +51,19 @@ public class ThymeleafController {
     public RedirectView lineLogin(HttpSession httpSession, RedirectAttributes attributes, @RequestParam String code) {
         LineUser lineUser = lineLoginService.getLineUserInfo(code);
         httpSession.setAttribute("lineUser", lineUser);
+        httpSession.setAttribute("loginFlag", true);
         attributes.addFlashAttribute("lineUser", lineUser);
         return new RedirectView("index");
     }
 
     @RequestMapping("/index")
     public String index(HttpSession httpSession, Model model, @ModelAttribute("lineUser") LineUser lineUser) {
-        if (lineUser.getName() == null) {
+        if (httpSession.getAttribute("loginFlag") != null) {
             if (httpSession.getAttribute("lineUser") != null) {
-                lineUser = (LineUser) httpSession.getAttribute("lineUser") ;
+                lineUser = (LineUser) httpSession.getAttribute("lineUser");
             }
+        } else {
+            return "redirect:login";
         }
         model.addAttribute("menu", menuService.getMenu(1, 2));
         model.addAttribute("lineUser", lineUser);
@@ -84,5 +87,10 @@ public class ThymeleafController {
     @RequestMapping("/menu/changePassword")
     public String changePassword(Model model) {
         return "menu/changePassword";
+    }
+
+    @RequestMapping("/menu/photoAlbum")
+    public String photoAlbum(Model model) {
+        return "menu/photoAlbum";
     }
 }

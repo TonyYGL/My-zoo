@@ -1,0 +1,30 @@
+.lb-close {
+    display: none!important
+}
+
+.btn {
+    padding: 0px 12px;
+}
+
+.album {
+    margin-top: 20px;
+}
+
+.gallery {
+    border: 1px solid #ccc;
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  max-width: 100%;
+}
+
+.responsive {
+  padding: 0 6px;
+  float: left;
+  width: 24.99999%;
+}
+

@@ -1,11 +1,13 @@
 package com.example.petproject.controller;
 
 import com.example.petproject.service.*;
+import com.example.petproject.vo.ImageVo;
 import com.example.petproject.vo.PetVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RestController
@@ -50,5 +52,15 @@ public class ApiRestController {
     @PostMapping("/changePassword")
     public boolean changePassword(@RequestParam String password1, @RequestParam String password2) {
         return userService.changePassword(password1, password2);
+    }
+
+    @GetMapping("/logout")
+    public void logout(HttpSession httpSession) {
+        httpSession.invalidate();
+    }
+
+    @GetMapping("/images")
+    public List<ImageVo> findImagesByUserId(@RequestParam long userId) {
+        return imageFileService.findImageByUserId(userId);
     }
 }

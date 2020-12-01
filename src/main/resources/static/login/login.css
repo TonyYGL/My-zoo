@@ -53,3 +53,17 @@ h1 {
     margin-top: 5%;
 }
 
+#gotoBtn {
+    width: 151px;
+    height:44px;
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    border-radius: 5px;
+}
+
+.space {
+    padding: 10px;
+    background-color: #e5e2e4cf;
+    border-radius: 10px;
+}

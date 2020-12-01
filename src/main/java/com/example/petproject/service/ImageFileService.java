@@ -2,7 +2,9 @@ package com.example.petproject.service;
 
 import com.example.petproject.po.ImagePo;
 import com.example.petproject.repository.ImageRepository;
+import com.example.petproject.util.ImageMapper;
 import com.example.petproject.util.UuidUtil;
+import com.example.petproject.vo.ImageVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,15 +14,17 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class ImageFileService {
 
     @Autowired
     private ImageRepository imageRepository;
+    @Autowired
+    private ImageMapper imageMapper;
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -44,7 +48,7 @@ public class ImageFileService {
                 String fileType = originalName.substring(originalName.lastIndexOf("."));
                 String newFileName = insertImageRecord(1, originalName);
 
-                File file = new File(IMAGE_PATH + newFileName + "." + fileType);
+                File file = new File(IMAGE_PATH + newFileName + fileType);
                 try (FileOutputStream fileOutputStream = new FileOutputStream(file)) {
                     fileOutputStream.write(uploadFile.getBytes());
                     fileOutputStream.flush();
@@ -68,5 +72,14 @@ public class ImageFileService {
         imagePo.setCreateTime(LocalDateTime.now());
         imageRepository.save(imagePo);
         return uuid;
+    }
+
+    public List<ImageVo> findImageByUserId(long userId) {
+        List<ImagePo> imagePoList = imageRepository.findAllByUserId(userId);
+        List<ImageVo> imageVoList = new ArrayList<>();
+        for (ImagePo imagePo : imagePoList) {
+            imageVoList.add(imageMapper.poToVo(imagePo));
+        }
+        return imageVoList;
     }
 }

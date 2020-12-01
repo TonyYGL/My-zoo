@@ -2,16 +2,21 @@ package com.example.petproject;
 
 import com.example.petproject.po.UserPo;
 import com.example.petproject.repository.UserRepository;
+import com.example.petproject.service.ImageFileService;
+import com.example.petproject.vo.ImageVo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @SpringBootTest
 class PetProjectApplicationTests {
 	@Autowired
 	private UserRepository userRepository;
+	@Autowired
+	private ImageFileService imageFileService;
 
 	@Test
 	void contextLoads() {
@@ -29,6 +34,12 @@ class PetProjectApplicationTests {
 		userPo.setCreateDate(LocalDate.now());
 		userPo.setLevel(1);
 		userRepository.save(userPo);
+	}
+
+	@Test
+	void findImages() {
+		List<ImageVo> imageVoList = imageFileService.findImageByUserId(1);
+		System.out.println("imageVoList = " + imageVoList);
 	}
 
 }
