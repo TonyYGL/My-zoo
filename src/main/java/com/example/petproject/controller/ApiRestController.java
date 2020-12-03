@@ -1,9 +1,11 @@
 package com.example.petproject.controller;
 
 import com.example.petproject.service.*;
+import com.example.petproject.vo.AdoptVo;
 import com.example.petproject.vo.ImageVo;
 import com.example.petproject.vo.PetVo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -22,6 +24,9 @@ public class ApiRestController {
 
     @Autowired
     private MailService mailService;
+
+    @Autowired
+    private AdoptService adoptService;
 
     @Autowired
     private ValidCodeService validCodeService;
@@ -62,5 +67,10 @@ public class ApiRestController {
     @GetMapping("/images")
     public List<ImageVo> findImagesByUserId(@RequestParam long userId) {
         return imageFileService.findImageByUserId(userId);
+    }
+
+    @GetMapping("/moreAdopts")
+    public List<AdoptVo> moreAdopts(@RequestParam(required = false, defaultValue = "0") int currentIndex) {
+        return adoptService.getAdoptList(currentIndex);
     }
 }

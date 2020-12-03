@@ -37,21 +37,25 @@ $(function() {
     $("#accordion").accordion({
         collapsible: true,
         icons: icons,
-        header: "> div > h3"
-    }).sortable({
-        axis: "y",
-        handle: "h3",
-        stop: function(event, ui) {
-            ui.item.children("h3").triggerHandler("focusout");
-            $(this).accordion("refresh");
-        }
+        header: "> div > h3",
+        active: false
     });
 
-    loadUserInfoPage(); //初始頁面
+    $(".toggleBtn").click(function() {
+        if($(".menu").is(':visible')) {
+            $('.toggleBtn').text('展開');
+        } else {
+            $('.toggleBtn').text('收起');
+        }
+        $(".menu").toggle(300, 'swing');
+    });
+
+    loadUserInfoPage(); //TODO 初始頁面 訪客和會員區分
 });
 const contextPath = $("meta[name='ctx']").attr("content");
 
 var goto = function(element) {
+    $("#accordion").accordion({ header: "h3", active: false, collapsible: true });
     let href = element.getAttribute("href");
     $.ajax({
       url: href,
@@ -67,7 +71,7 @@ var goto = function(element) {
 
 var loadUserInfoPage = function() {
     $.ajax({
-      url: contextPath + "/menu/photoAlbum",
+      url: contextPath + "/menu/adopt",
       success: function(data) {
         $("#content").html(data);
       },

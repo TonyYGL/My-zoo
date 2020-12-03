@@ -73,13 +73,23 @@ var imageUpload = function() {
         success: function (data) {
           alert(data);
           $("#submitBtn").prop("disabled", false);
-          location.reload();
+          reloadAlbum();
         },
         error: function (e) {
           alert(e);
           $("#submitBtn").prop("disabled", false);
         }
     })
+}
+
+var reloadAlbum = function() {
+    $.ajax({
+      url: contextPath + "/menu/photoAlbum",
+      success: function(data) {
+        $("#content").html(data);
+      },
+      dataType: "html"
+    });
 }
 
 lightbox.option({

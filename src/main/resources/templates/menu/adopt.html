@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>認養專區</title>
+    <link th:href="@{/adopt/adopt.css}" rel="stylesheet" />
+    <script th:src="@{/adopt/adopt.js}" type="text/javascript"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        <h1>認養專區</h1>
+        <table class="table table-striped" cellspacing="0" cellpadding="0" border="1">
+            <thead>
+                <tr>
+                    <th>編號</th>
+                    <th>品種</th>
+                    <th>年齡</th>
+                    <th>花色</th>
+                    <th>性別</th>
+                    <th>大小</th>
+                    <th>照片</th>
+                    <th>是否節育</th>
+                    <th>是否施打狂犬病疫苗</th>
+                    <th>狀態</th>
+                    <th>所在地</th>
+                    <th>開放認養時間</th>
+                    <th>收容所電話</th>
+                    <th>收容所地址</th>
+                    <th>尋獲地</th>
+                    <th>備註</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="adoptVo : ${adoptVoList}">
+                    <td th:text="${adoptVo.id}"></td>
+                    <td th:text="${adoptVo.kind}"></td>
+                    <td th:text="${adoptVo.age}"></td>
+                    <td th:text="${adoptVo.color}"></td>
+                    <td th:text="${adoptVo.sex}"></td>
+                    <td th:text="${adoptVo.bodyType}"></td>
+                    <td>
+                        <a th:if="${adoptVo.albumFile != ''}" th:href="${adoptVo.albumFile}" data-lightbox="roadtrip">
+                            <img th:src="${adoptVo.albumFile}" width="100px" height="100px"/>
+                        </a>
+                    </td>
+                    <td th:text="${adoptVo.sterilization}"></td>
+                    <td th:text="${adoptVo.bacterin}"></td>
+                    <td th:text="${adoptVo.status}"></td>
+                    <td class="findPlace" th:text="${adoptVo.place}"></td>
+                    <td th:text="${adoptVo.openDate}"></td>
+                    <td th:text="${adoptVo.shelterPhone}"></td>
+                    <td class="findPlace" th:text="${adoptVo.shelterAddress}"></td>
+                    <td th:text="${adoptVo.foundPlace}"></td>
+                    <td th:text="${adoptVo.remark}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

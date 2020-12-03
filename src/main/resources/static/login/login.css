@@ -49,21 +49,18 @@ h1 {
     margin-right: 2vh;
 }
 
-.space {
-    margin-top: 5%;
-}
-
-#gotoBtn {
+#loginBtn {
     width: 151px;
     height:44px;
-    padding: 0px;
-    margin: 0px;
-    border: 0px;
+    padding: 0px 0px;
+    margin: 0px 0px;
+    border: none;
     border-radius: 5px;
 }
 
 .space {
-    padding: 10px;
-    background-color: #e5e2e4cf;
+    margin-top: 25%;
+    box-shadow: 5px 5px 100px #dfdfe0;
+    padding: 10px 10px;
     border-radius: 10px;
 }

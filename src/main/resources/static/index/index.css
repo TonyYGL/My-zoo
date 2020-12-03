@@ -48,3 +48,9 @@ button[data-toggle="popover"]:focus {
 .top {
     margin-bottom: 2vh;
 }
+
+.toggleBtn {
+    padding: 0px 2px;
+    border: none;
+    background-color: #efb278!important;
+}

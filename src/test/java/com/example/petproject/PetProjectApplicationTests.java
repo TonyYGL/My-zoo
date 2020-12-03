@@ -2,7 +2,9 @@ package com.example.petproject;
 
 import com.example.petproject.po.UserPo;
 import com.example.petproject.repository.UserRepository;
+import com.example.petproject.service.AdoptService;
 import com.example.petproject.service.ImageFileService;
+import com.example.petproject.service.LineLoginService;
 import com.example.petproject.vo.ImageVo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,10 @@ class PetProjectApplicationTests {
 	private UserRepository userRepository;
 	@Autowired
 	private ImageFileService imageFileService;
+	@Autowired
+	private LineLoginService lineLoginService;
+	@Autowired
+	private AdoptService adoptService;
 
 	@Test
 	void contextLoads() {
@@ -40,6 +46,16 @@ class PetProjectApplicationTests {
 	void findImages() {
 		List<ImageVo> imageVoList = imageFileService.findImageByUserId(1);
 		System.out.println("imageVoList = " + imageVoList);
+	}
+
+	@Test
+	void lineAuth() {
+		lineLoginService.lineAuth();
+	}
+
+	@Test
+	void getAdoptData() {
+		adoptService.getAdoptList(0);
 	}
 
 }

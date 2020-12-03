@@ -6,12 +6,14 @@ import com.example.petproject.po.UserPo;
 import com.example.petproject.vo.UserVo;
 import org.springframework.stereotype.Component;
 
+import java.util.Optional;
+
 @Component
 public class UserMapperImpl implements UserMapper {
     @Override
-    public UserVo userPoToVo(UserPo userpo) {
+    public Optional<UserVo> userPoToVo(UserPo userpo) {
         if (userpo == null) {
-            return new UserVo();
+            return Optional.empty();
         }
         UserVo userVo = new UserVo();
         userVo.setAccount(userpo.getAccount());
@@ -20,6 +22,6 @@ public class UserMapperImpl implements UserMapper {
         userVo.setLevel(LevelType.getType(userpo.getLevel()));
         userVo.setName(userpo.getName());
         userVo.setCreateDate(userpo.getCreateDate());
-        return userVo;
+        return Optional.of(userVo);
     }
 }

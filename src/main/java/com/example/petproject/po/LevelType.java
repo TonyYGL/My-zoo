@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public enum LevelType {
 
-    ADMIN(1, "管理員"), USER(2, "一般會員");
+    ADMIN(1, "管理員"), MEMBER(2, "一般會員"), VISITOR(3, "訪客");
 
     private int levelId;
     private String levelName;
@@ -18,7 +18,7 @@ public enum LevelType {
         return Arrays.stream(LevelType.values())
                 .filter(petType -> petType.levelId == levelId)
                 .findFirst()
-                .orElse(USER)
+                .orElse(VISITOR)
                 .levelName;
     }
 }

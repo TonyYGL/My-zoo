@@ -10,20 +10,21 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
+import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
+
+import java.net.HttpURLConnection;
 
 @Service
 public class LineLoginService {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
     private static final String TOEKN_URL = "https://api.line.me/oauth2/v2.1/token";
+    private static final String AUTH_URL = "https://my-zoo.herokuapp.com/gotoauthpage";
     private static final String GRANT_TYPE = "authorization_code";
 
     @Value("${line.clientId}")
@@ -41,8 +42,21 @@ public class LineLoginService {
         return decodeJWT(idToken);
     }
 
+    public String lineAuth() {
+        RestTemplate restTemplate = new RestTemplate( new SimpleClientHttpRequestFactory(){
+            @Override
+            protected void prepareConnection(HttpURLConnection connection, String httpMethod ) {
+                connection.setInstanceFollowRedirects(false);
+            }
+        } );
+
+        ResponseEntity<Object> response = restTemplate.exchange(AUTH_URL, HttpMethod.GET, null, Object.class);
+        String location = response.getHeaders().getLocation() == null ? "" : response.getHeaders().getLocation().toString();
+        return location.replaceFirst("scope=", "scope=email%20");
+    }
+
     private String getAccessToken(String code) {
-        MultiValueMap<String, String> requestMap= new LinkedMultiValueMap<String, String>();
+        MultiValueMap<String, String> requestMap= new LinkedMultiValueMap<>();
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
         requestMap.add("code", code);
@@ -67,7 +81,14 @@ public class LineLoginService {
         DecodedJWT decodedJWT = jwtVerifier.verify(idToken);
         String name = decodedJWT.getClaim("name").asString();
         String picture = decodedJWT.getClaim("picture").asString();
-        return new LineUser(name, picture);
+        String email = decodedJWT.getClaim("email").asString();
+        return new LineUser(name, picture, email);
+    }
+
+    public static void main(String[] args) {
+        String url = "https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=1655289259&redirect_uri=http%3A%2F%2F192.168.0.49%3A8080%2Fmyzoo%2Fline-login&state=Z2l1Jy5g-7pGYpd3ElYiHu_aWDv_IBzuxqhEG2MGH5U&scope=openid%20profile&nonce=XWq-01PTctUwf9JCNueFRNxyexVVWB_ZUB37Mfz18Mg";
+
+        System.out.println("url = " + url);
     }
 
 }

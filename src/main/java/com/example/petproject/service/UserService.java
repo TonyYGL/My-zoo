@@ -22,13 +22,14 @@ public class UserService {
     @Autowired
     private PasswordUtil passwordUtil;
 
-    public UserVo findById(long id) {
+    public Optional<UserVo> findById(long id) {
         UserPo userPo = userRepository.findById(id).orElse(null);
         return userMapper.userPoToVo(userPo);
     }
 
-    public UserVo findUserInfo(String account, String password) {
-        UserPo userPo = userRepository.findByAccountAndPassword(account, password);
+    public Optional<UserVo> findUserInfo(String account, String password) {
+        String securePassword = passwordUtil.generateSecurePassword(password);
+        UserPo userPo = userRepository.findByAccountAndPassword(account, securePassword);
         return userMapper.userPoToVo(userPo);
     }
 

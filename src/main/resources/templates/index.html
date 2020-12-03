@@ -34,14 +34,21 @@
                     <button th:if="${lineUser.picture}" data-toggle="popover">
                         <img id="userPicture" th:src="${lineUser.picture}"/>
                     </button>
+                    <button th:unless="${lineUser.picture}" data-toggle="popover">
+                        <img src="./img/default-picture.svg;" width="50px;" height="50px";>
+                    </button>
                 </div>
             </div>
         </div>
         <div th:if="${lineUser.name}">
             <span th:text="'您好, ' + ${lineUser.name}"></span>
         </div>
+<!--        <div th:if="${lineUser.email}">-->
+<!--            <span th:text="'電子信箱, ' + ${lineUser.email}"></span>-->
+<!--        </div>-->
+        <button class="btn btn-info toggleBtn">收起</button>
         <div class="row">
-            <div class="col-sm-2 top">
+            <div class="col-sm-2 top menu">
                 <div id="accordion">
                     <div th:each="item : ${menu}" class="group">
                         <h3 th:text="${item.name}">Accordion</h3>

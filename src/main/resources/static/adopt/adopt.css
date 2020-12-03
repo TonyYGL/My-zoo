@@ -1,0 +1,22 @@
+td {
+    word-wrap: break-word;
+    text-align: center;
+}
+
+th {
+    word-break: keep-all;
+}
+
+table {
+    width: auto;
+    margin: 5px auto;
+}
+
+.lb-close {
+    display: none!important
+}
+
+.findPlace {
+    cursor: pointer;
+    text-decoration: underline;
+}
