@@ -21,6 +21,7 @@
     <script th:src="@{/index/index.js}" type="text/javascript"></script>
     <script th:src="@{/stepper/stepper.min.js}" type="text/javascript"></script>
     <script th:src="@{/lightbox/lightbox.min.js}" type="text/javascript"></script>
+    <script th:src="@{/sweetalert/sweetalert.min.js}" type="text/javascript"></script>
 </head>
 <body>
     <div class="container-fluid">
@@ -40,12 +41,10 @@
                 </div>
             </div>
         </div>
-        <div th:if="${lineUser.name}">
-            <span th:text="'您好, ' + ${lineUser.name}"></span>
+        <div >
+            <span th:if="${lineUser.name}" th:text="'您好, ' + ${lineUser.name}"></span>
+            <span th:if="${lineUser.email}"th:text="'電子信箱, ' + ${lineUser.email}"></span>
         </div>
-<!--        <div th:if="${lineUser.email}">-->
-<!--            <span th:text="'電子信箱, ' + ${lineUser.email}"></span>-->
-<!--        </div>-->
         <button class="btn btn-info toggleBtn">收起</button>
         <div class="row">
             <div class="col-sm-2 top menu">

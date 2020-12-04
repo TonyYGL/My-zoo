@@ -1,4 +1,4 @@
-package com.example.petproject.po;
+package com.example.petproject.enums;
 
 import java.util.Arrays;
 

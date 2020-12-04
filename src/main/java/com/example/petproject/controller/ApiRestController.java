@@ -1,5 +1,6 @@
 package com.example.petproject.controller;
 
+import com.example.petproject.bean.Shelter;
 import com.example.petproject.service.*;
 import com.example.petproject.vo.AdoptVo;
 import com.example.petproject.vo.ImageVo;
@@ -18,21 +19,18 @@ public class ApiRestController {
 
     @Autowired
     private PetService petService;
-
     @Autowired
     private ImageFileService imageFileService;
-
     @Autowired
     private MailService mailService;
-
     @Autowired
     private AdoptService adoptService;
-
     @Autowired
     private ValidCodeService validCodeService;
-
     @Autowired
     private UserService userService;
+    @Autowired
+    private ShelterService shelterService;
 
     @GetMapping("/getPetList")
     public List<PetVo> findPetsByOwnerId(@RequestParam int ownerId) {
@@ -72,5 +70,10 @@ public class ApiRestController {
     @GetMapping("/moreAdopts")
     public List<AdoptVo> moreAdopts(@RequestParam(required = false, defaultValue = "0") int currentIndex) {
         return adoptService.getAdoptList(currentIndex);
+    }
+
+    @GetMapping("/shelterList")
+    public List<Shelter> shelterList(@RequestParam(required = false, defaultValue = "N") String position) {
+        return shelterService.getShelterList(position);
     }
 }

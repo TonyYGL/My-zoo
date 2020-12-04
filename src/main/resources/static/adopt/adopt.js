@@ -1,5 +1,7 @@
 $(function() {
+    alert('adopt');
     var currentIndex = 0;
+    console.log($(document));
     $(document).scroll(function() {
         if ($(window).height() + $(window).scrollTop() == $(document).height()) {
             console.log('loading...');

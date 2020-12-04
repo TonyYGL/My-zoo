@@ -33,6 +33,8 @@ public class ThymeleafController {
     private LineLoginService lineLoginService;
     @Autowired
     private AdoptService adoptService;
+    @Autowired
+    private ShelterService shelterService;
 
     @GetMapping("/login")
     public String login(Model model, @ModelAttribute("errorMessage") String errorMessage) {
@@ -44,9 +46,7 @@ public class ThymeleafController {
 
     @PostMapping("/formLogin")
     public RedirectView formLogin(@ModelAttribute LoginForm loginForm, HttpSession httpSession,  RedirectAttributes attributes) {
-        System.out.println("loginForm = " + loginForm);
         Optional<UserVo> optionalUserVo = userService.findUserInfo(loginForm.getAccount(), loginForm.getPassword());
-        System.out.println("userVo = " + optionalUserVo);
         if (optionalUserVo.isPresent()) {
             UserVo userVo = optionalUserVo.get();
             httpSession.setAttribute("loginFlag", true);
@@ -124,7 +124,8 @@ public class ThymeleafController {
     }
 
     @GetMapping("/menu/shelter")
-    public String shelter() {
+    public String shelter(Model model) {
+        model.addAttribute("shelterList", shelterService.getShelterList("N"));
         return "menu/shelter";
     }
 }

@@ -44,10 +44,15 @@ $(function() {
     $(".toggleBtn").click(function() {
         if($(".menu").is(':visible')) {
             $('.toggleBtn').text('展開');
+            $("#content").removeClass('col-sm-10');
+            $("#content").addClass('col-sm-12');
         } else {
             $('.toggleBtn').text('收起');
+            $("#content").removeClass('col-sm-12');
+            $("#content").addClass('col-sm-10');
         }
         $(".menu").toggle(300, 'swing');
+
     });
 
     loadUserInfoPage(); //TODO 初始頁面 訪客和會員區分
@@ -71,7 +76,7 @@ var goto = function(element) {
 
 var loadUserInfoPage = function() {
     $.ajax({
-      url: contextPath + "/menu/adopt",
+      url: contextPath + "/menu/shelter",
       success: function(data) {
         $("#content").html(data);
       },

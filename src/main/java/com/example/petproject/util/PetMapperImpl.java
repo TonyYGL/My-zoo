@@ -1,6 +1,6 @@
 package com.example.petproject.util;
 
-import com.example.petproject.po.GenderType;
+import com.example.petproject.enums.GenderType;
 import com.example.petproject.po.PetPo;
 import com.example.petproject.vo.PetVo;
 import org.springframework.stereotype.Component;

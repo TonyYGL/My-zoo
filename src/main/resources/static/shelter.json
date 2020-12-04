@@ -1,0 +1,166 @@
+[{
+    "areaId": 3,
+    "shelterId": 48,
+    "shelterName": "基隆市寵物銀行",
+    "position": "N"
+}, {
+    "areaId": 2,
+    "shelterId": 49,
+    "shelterName": "臺北市動物之家",
+    "position": "N"
+}, {
+    "areaId": 3,
+    "shelterId": 50,
+    "shelterName": "新北市板橋區公立動物之家",
+    "position": "N"
+}, {
+    "areaId": 3,
+    "shelterId": 51,
+    "shelterName": "新北市新店區公立動物之家",
+    "position": "N"
+}, {
+    "areaId": 3,
+    "shelterId": 53,
+    "shelterName": "新北市中和區公立動物之家",
+    "position": "N"
+}, {
+    "areaId": 3,
+    "shelterId": 55,
+    "shelterName": "新北市淡水區公立動物之家",
+    "position": "N"
+}, {
+    "areaId": 3,
+    "shelterId": 56,
+    "shelterName": "新北市瑞芳區公立動物之家",
+    "position": "N"
+}, {
+    "areaId": 3,
+    "shelterId": 58,
+    "shelterName": "新北市五股區公立動物之家",
+    "position": "N"
+}, {
+    "areaId": 3,
+    "shelterId": 59,
+    "shelterName": "新北市八里區公立動物之家",
+    "position": "N"
+}, {
+    "areaId": 3,
+    "shelterId": 60,
+    "shelterName": "新北市三芝區公立動物之家",
+    "position": "N"
+}, {
+    "areaId": 6,
+    "shelterId": 61,
+    "shelterName": "桃園市動物保護教育園區",
+    "position": "N"
+}, {
+    "areaId": 8,
+    "shelterId": 62,
+    "shelterName": "新竹市動物收容所",
+    "position": "N"
+}, {
+    "areaId": 7,
+    "shelterId": 63,
+    "shelterName": "新竹縣動物收容所",
+    "position": "N"
+}, {
+    "areaId": 10,
+    "shelterId": 67,
+    "shelterName": "臺中市動物之家南屯園區",
+    "position": "M"
+}, {
+    "areaId": 10,
+    "shelterId": 68,
+    "shelterName": "臺中市動物之家后里園區",
+    "position": "M"
+}, {
+    "areaId": 11,
+    "shelterId": 69,
+    "shelterName": "彰化縣流浪狗中途之家",
+    "position": "M"
+}, {
+    "areaId": 12,
+    "shelterId": 70,
+    "shelterName": "南投縣公立動物收容所",
+    "position": "M"
+}, {
+    "areaId": 15,
+    "shelterId": 71,
+    "shelterName": "嘉義市流浪犬收容中心",
+    "position": "S"
+}, {
+    "areaId": 14,
+    "shelterId": 72,
+    "shelterName": "嘉義縣流浪犬中途之家",
+    "position": "S"
+}, {
+    "areaId": 16,
+    "shelterId": 73,
+    "shelterName": "臺南市動物之家灣裡站",
+    "position": "S"
+}, {
+    "areaId": 16,
+    "shelterId": 74,
+    "shelterName": "臺南市動物之家善化站",
+    "position": "S"
+}, {
+    "areaId": 17,
+    "shelterId": 75,
+    "shelterName": "高雄市壽山動物保護教育園區",
+    "position": "S"
+}, {
+    "areaId": 17,
+    "shelterId": 76,
+    "shelterName": "高雄市燕巢動物保護關愛園區",
+    "position": "S"
+}, {
+    "areaId": 18,
+    "shelterId": 77,
+    "shelterName": "屏東縣流浪動物收容所",
+    "position": "S"
+}, {
+    "areaId": 5,
+    "shelterId": 78,
+    "shelterName": "宜蘭縣流浪動物中途之家",
+    "position": "N"
+}, {
+    "areaId": 19,
+    "shelterId": 79,
+    "shelterName": "花蓮縣流浪犬中途之家",
+    "position": "E"
+}, {
+    "areaId": 20,
+    "shelterId": 80,
+    "shelterName": "臺東縣動物收容中心",
+    "position": "E"
+}, {
+    "areaId": 23,
+    "shelterId": 81,
+    "shelterName": "連江縣流浪犬收容中心",
+    "position": "O"
+}, {
+    "areaId": 22,
+    "shelterId": 82,
+    "shelterName": "金門縣動物收容中心",
+    "position": "O"
+}, {
+    "areaId": 21,
+    "shelterId": 83,
+    "shelterName": "澎湖縣流浪動物收容中心",
+    "position": "O"
+}, {
+    "areaId": 13,
+    "shelterId": 89,
+    "shelterName": "雲林縣流浪動物收容所",
+    "position": "M"
+}, {
+    "areaId": 3,
+    "shelterId": 92,
+    "shelterName": "新北市政府動物保護防疫處",
+    "position": "N"
+}, {
+    "areaId": 9,
+    "shelterId": 96,
+    "shelterName": "苗栗縣生態保育教育中心",
+    "position": "M"
+}]

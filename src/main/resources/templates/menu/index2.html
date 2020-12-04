@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <!-- Required meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="fontawesome-free-5.15.1-web/css/all.css">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            color: #525252;
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #eaebe5;
+        }
+
+        a {
+            list-style: none;
+            color: #525252;
+        }
+
+        a:hover {
+            list-style: none;
+            text-decoration: none;
+            color: #9ea5b2;
+        }
+
+        header {
+            height: 100px;
+            background-color: #fff;
+        }
+
+        .loginContainer {
+            margin: 100px auto;
+            width: 400px;
+            height: 450px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: space-between;
+            /* align-items: stretch; */
+            /* align-items: flex-start; */
+        }
+
+        .loginTitle {
+            display: flex;
+            align-self: center;
+        }
+
+        input[type="text"] {
+            color: #9ea5b2;
+            width: 400px;
+            height: 40px;
+            border-radius: 150px 150px 150px 150px;
+            border: 0 none;
+            outline: 0;
+            padding: 0 30px;
+        }
+
+         ::placeholder {
+            color: #9ea5b2;
+            font-size: 0.9em;
+            /* padding-left: 1em; */
+        }
+
+        .inputTitle {
+            margin: 5px 10px;
+        }
+
+        .loginOther {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            align-self: flex-start;
+        }
+
+        .keepLoggedIn {
+            margin-right: 10px;
+        }
+
+        input[type=checkbox] {
+            margin-right: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .divider {
+            margin: 0 10px;
+        }
+
+        label {
+            margin: 0;
+        }
+
+        .socialLogin {
+            text-align: center;
+            margin: 20px 0;
+            display: flex;
+            align-self: flex-start;
+        }
+
+        .fab {
+            margin: 0 10px;
+            font-size: 2rem;
+            color: #9ea5b2;
+        }
+
+        .loginBtn {
+            width: 400px;
+            height: 40px;
+            margin: 10px 0 20px 0;
+            text-align: center;
+            line-height: 2.5rem;
+            border-radius: 150px 150px 150px 150px;
+            background-color: #5f5f5b;
+            color: #fff;
+            outline: 0;
+            transition: .5s;
+        }
+
+        .loginBtn:hover {
+            background-color: #5f5f5b79;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="loginContainer">
+
+            <h1 class="loginTitle">安安安後台登入</h1>
+
+            <div class="inputGroup">
+                <label for="" class="inputTitle">帳號</label>
+                <input type="text" placeholder="請輸入管理者帳號">
+            </div>
+            <div class="inputGroup">
+                <label for="" class="inputTitle">密碼</label>
+                <input type="text" placeholder="請輸入管理者密碼">
+            </div>
+
+            <label for="" class="inputTitle"></label>
+            <a href="" class="loginBtn">登入後台</a>
+
+            <div class="loginOther">
+                <input type="checkbox" class="keepLoggedIn" name="" id="">
+                <label for="" class=""> 保持登入 </label>
+                <span class="divider"> | </span>
+                <a class="forgetPassword" href="#"> 忘記密碼 </a>
+            </div>
+
+
+            <div class="socialLogin">
+                使用社群登入：
+                <div class="socialIcon">
+                    <i class="fab fa-facebook-square"></i>
+                    <i class="fab fa-google-plus-square"></i>
+                    <i class="fab fa-line"></i>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

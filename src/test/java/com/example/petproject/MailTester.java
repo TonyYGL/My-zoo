@@ -1,6 +1,7 @@
 package com.example.petproject;
 
 import com.example.petproject.service.MailService;
+import com.example.petproject.service.ShelterService;
 import com.example.petproject.util.PasswordUtil;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,10 @@ public class MailTester {
     @Autowired
     private PasswordUtil passwordUtil;
 
+    @Autowired
+    private ShelterService shelterService;
+
+
     @Test
     public void testMail() {
         mailService.sendValidCodeMail("pox810324@gmail.con");
@@ -29,5 +34,10 @@ public class MailTester {
         System.out.println("securePassword = " + securePassword);
         boolean eqaul = passwordUtil.verifyUserPassword(password, securePassword);
         System.out.println("eqaul = " + eqaul);
+    }
+
+    @Test
+    public void testShelter() {
+        System.out.println(shelterService.getShelterList("E"));
     }
 }

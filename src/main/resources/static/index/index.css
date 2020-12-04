@@ -53,4 +53,7 @@ button[data-toggle="popover"]:focus {
     padding: 0px 2px;
     border: none;
     background-color: #efb278!important;
+    position:fixed;
+    top:50%;
+    z-index: 1;
 }

@@ -23,9 +23,9 @@ var findImagesByUserId = function(userId) {
           $.each(data, function() {
             let fileName = this.fileName;
             let createTime = this.createTime;
-            let content = '<div class="responsive"><div class="gallery"><a data-lightbox="roadtrip2" href="' +  fileName + '">' +
-                          '<img src="' +  fileName + '"></a></div></div>';
-            $(".album").append(content);
+            let content = '<div class="gallery col-sm-2"><a data-lightbox="roadtrip2" href="' +  fileName + '">' +
+                          '<img src="' +  fileName + '"></a><div>test area</div></div>';
+            $(".gallerys").append(content);
           })
         },
         error: function (e) {
@@ -61,17 +61,22 @@ var imageUpload = function() {
     $("#submitBtn").prop("disabled", true);
 
     $.ajax({
-        type: "POST",               //使用POST傳輸,檔案上傳只能用POST
+        type: "POST", //使用POST傳輸,檔案上傳只能用POST
         enctype: 'multipart/form-data', //將資料加密傳輸 檔案上傳一定要有的屬性
         url: contextPath + "/api/imgUpload", //要傳輸對應的接口
-        data: data,         //要傳輸的資料,我們將form 內upload打包成data
+        data: data, //要傳輸的資料,我們將form 內upload打包成data
         processData: false, //防止jquery將data變成query String
         contentType: false,
         cache: false,  //不做快取
         async : false, //設為同步
         timeout: 1000000, //設定傳輸的timeout,時間內沒完成則中斷
         success: function (data) {
-          alert(data);
+          Swal.fire({
+            title: data,
+            icon:'success',
+            showConfirmButton: false,
+            timer: 1500
+          })
           $("#submitBtn").prop("disabled", false);
           reloadAlbum();
         },
