@@ -1,9 +1,5 @@
 $(function() {
-    // disable scroll;
-    $(document).scroll(function() {
 
-    });
-    alert('shelter');
 })
 
 $('#mapAreaN').click(function() {

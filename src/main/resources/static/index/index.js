@@ -60,6 +60,8 @@ $(function() {
 const contextPath = $("meta[name='ctx']").attr("content");
 
 var goto = function(element) {
+    // unbind infinite scrolling event
+    $(document).unbind("scroll");
     $("#accordion").accordion({ header: "h3", active: false, collapsible: true });
     let href = element.getAttribute("href");
     $.ajax({
