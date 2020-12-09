@@ -44,6 +44,11 @@ public class ThymeleafController {
         return "login";
     }
 
+    @GetMapping("/login2")
+    public String login2(Model model, @ModelAttribute("errorMessage") String errorMessage) {
+        return "login2";
+    }
+
     @PostMapping("/formLogin")
     public RedirectView formLogin(@ModelAttribute LoginForm loginForm, HttpSession httpSession,  RedirectAttributes attributes) {
         Optional<UserVo> optionalUserVo = userService.findUserInfo(loginForm.getAccount(), loginForm.getPassword());

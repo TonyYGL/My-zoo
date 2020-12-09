@@ -1,0 +1,150 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    color: #525252;
+    font-family: 'Noto Sans TC', sans-serif;
+    background-color: #eaebe5;
+}
+
+a {
+    list-style: none;
+    color: #525252;
+}
+
+a:hover {
+    list-style: none;
+    text-decoration: none;
+    color: #9ea5b2;
+}
+
+header {
+    height: 100px;
+    background-color: #fff;
+}
+
+.loginContainer {
+    margin: 100px auto;
+    max-width: 400px;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    /* align-items: stretch; */
+    /* align-items: flex-start; */
+}
+
+.loginTitle {
+    display: flex;
+    align-self: center;
+}
+
+input[type="text"] {
+    color: #9ea5b2;
+    width: 400px;
+    height: 40px;
+    border-radius: 150px 150px 150px 150px;
+    border: 0 none;
+    outline: 0;
+    padding: 0 30px;
+}
+
+ ::placeholder {
+    color: #9ea5b2;
+    font-size: 0.9em;
+    /* padding-left: 1em; */
+}
+
+.inputTitle {
+    margin: 5px 10px;
+}
+
+.loginOther {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    align-self: flex-start;
+}
+
+.keepLoggedIn {
+    margin-right: 10px;
+}
+
+input[type=checkbox] {
+    margin-right: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.divider {
+    margin: 0 10px;
+}
+
+label {
+    margin: 0;
+}
+
+.socialLogin {
+    text-align: center;
+    margin: 20px 0;
+    display: flex;
+    align-self: flex-start;
+}
+
+.fab {
+    margin: 0 10px;
+    font-size: 2rem;
+    color: #9ea5b2;
+}
+
+.loginBtn {
+    width: 400px;
+    height: 40px;
+    margin: 10px 0 20px 0;
+    text-align: center;
+    line-height: 2.5rem;
+    border-radius: 150px 150px 150px 150px;
+    background-color: #5f5f5b;
+    color: #fff;
+    outline: 0;
+    transition: .5s;
+}
+
+.loginBtn:hover {
+    background-color: #5f5f5b79;
+    color: #fff;
+}
+
+@media screen and (max-width: 450px) {
+    input[type="text"] {
+        width: 200px;
+    }
+    .loginBtn {
+        width: 250px;
+        margin: -20px 0 0 0;
+    }
+    .loginContainer {
+        height: 480px;
+        padding: 20px;
+        align-items: center;
+    }
+    .loginOther {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+    .socialLogin {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .socialIcon {
+        margin-top: 10px;
+    }
+    .fab {
+        font-size: 3rem;
+    }
+}
