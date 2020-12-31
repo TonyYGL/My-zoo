@@ -12,6 +12,7 @@ import java.util.Map;
 public class MenuVo {
 
     private String name;
-    private Map<String, String> functionMap;
+    private String icon;
+    private String url;
 
 }

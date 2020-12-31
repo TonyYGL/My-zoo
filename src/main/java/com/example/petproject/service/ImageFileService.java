@@ -46,6 +46,7 @@ public class ImageFileService {
         for (MultipartFile uploadFile : uploadfiles) {
             if (!uploadFile.isEmpty()) {
                 String originalName = uploadFile.getOriginalFilename();
+                System.out.println(">>" + originalName);
                 String fileType = originalName.substring(originalName.lastIndexOf("."));
                 String newFileName = insertImageRecord(1, originalName);
 

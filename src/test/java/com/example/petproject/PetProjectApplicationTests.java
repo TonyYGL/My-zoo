@@ -5,10 +5,12 @@ import com.example.petproject.repository.UserRepository;
 import com.example.petproject.service.AdoptService;
 import com.example.petproject.service.ImageFileService;
 import com.example.petproject.service.LineLoginService;
+import com.example.petproject.vo.AdoptVo;
 import com.example.petproject.vo.ImageVo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -55,7 +57,8 @@ class PetProjectApplicationTests {
 
 	@Test
 	void getAdoptData() {
-		adoptService.getAdoptList(0);
+		List<AdoptVo> adoptVoList = adoptService.getAdoptList(0);
+		assertEquals(20, adoptVoList.size());
 	}
 
 }

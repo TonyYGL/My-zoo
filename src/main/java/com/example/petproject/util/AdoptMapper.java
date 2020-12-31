@@ -5,11 +5,15 @@ import org.json.JSONObject;
 
 public class AdoptMapper {
 
-    public AdoptVo AdoptJsonToVo(JSONObject jsonObject) {
+    public AdoptVo adoptJsonToVo(JSONObject jsonObject) {
         AdoptVo adoptVo = new AdoptVo();
         adoptVo.setId(String.valueOf(jsonObject.getInt("animal_id")));
         adoptVo.setAge(transAge(jsonObject.getString("animal_age")));
-        adoptVo.setAlbumFile(jsonObject.getString("album_file"));
+        String albumFile = jsonObject.getString("album_file");
+        if (albumFile.indexOf("_org") != -1) {
+            albumFile = albumFile.replace("_org", "");
+        }
+        adoptVo.setAlbumFile(albumFile);
         adoptVo.setBacterin(transBacterin(jsonObject.getString("animal_bacterin")));
         adoptVo.setBodyType(transBodType(jsonObject.getString("animal_bodytype")));
         adoptVo.setColor(jsonObject.getString("animal_colour"));
@@ -32,6 +36,8 @@ public class AdoptMapper {
             result = "幼年";
         } else if ("ADULT".equals(age)) {
             result = "成年";
+        } else {
+            result = "未輸入";
         }
         return result;
     }
