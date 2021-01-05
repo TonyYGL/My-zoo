@@ -1,10 +1,10 @@
 server:
   servlet:
     context-path: /myzoo
-  error:
-    whitelabel:
-      enabled: false
-    path: /error
+#  error:
+#    whitelabel:
+#      enabled: false
+#    path: /error
 ## MySQL datasource 配置
 spring:
   servlet:
@@ -30,9 +30,9 @@ spring:
     mode: HTML
     prefix: classpath:/templates/
 
-  autoconfigure:
-    exclude:
-      - org.springframework.boot.autoconfigure.web.ErrorMvcAutoConfiguration
+#  autoconfigure:
+#    exclude:
+#      - org.springframework.boot.autoconfigure.web.ErrorMvcAutoConfiguration
 
 ## Mail 配置
   mail:

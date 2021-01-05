@@ -35,22 +35,22 @@ public class AdoptService {
      */
     @PostConstruct
     public void loadAPIData() {
-        new Thread(() -> {
-            try {
-                RestTemplate restTemplate = new RestTemplate();
-                ResponseEntity<String> adoptData
-                        = restTemplate.getForEntity(DATA_URL, String.class);
-                String body = adoptData.getBody();
-                JSONArray jsonArray = new JSONArray(body);
-                for (int index = 0; index < jsonArray.length(); index++) {
-                    JSONObject jsonObject = jsonArray.getJSONObject(index);
-                    redisUtil.addZSet(ADOPT_KEY, ADOPT_MAPPER.adoptJsonToVo(jsonObject), jsonObject.getLong("animal_id"));
-                }
-            } catch (Exception exception) {
-                exception.printStackTrace();
-                LOGGER.error(exception.getMessage());
-            }
-        }).start();
+//        new Thread(() -> {
+//            try {
+//                RestTemplate restTemplate = new RestTemplate();
+//                ResponseEntity<String> adoptData
+//                        = restTemplate.getForEntity(DATA_URL, String.class);
+//                String body = adoptData.getBody();
+//                JSONArray jsonArray = new JSONArray(body);
+//                for (int index = 0; index < jsonArray.length(); index++) {
+//                    JSONObject jsonObject = jsonArray.getJSONObject(index);
+//                    redisUtil.addZSet(ADOPT_KEY, ADOPT_MAPPER.adoptJsonToVo(jsonObject), jsonObject.getLong("animal_id"));
+//                }
+//            } catch (Exception exception) {
+//                exception.printStackTrace();
+//                LOGGER.error(exception.getMessage());
+//            }
+//        }).start();
     }
 
     public List<AdoptVo> getAdoptList(int currentIndex) {

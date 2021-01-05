@@ -1,6 +1,7 @@
 package com.example.petproject.controller;
 
 import com.example.petproject.bean.LoginForm;
+import com.example.petproject.bean.TestBean;
 import com.example.petproject.service.*;
 import com.example.petproject.vo.AdoptVo;
 import com.example.petproject.vo.MenuVo;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Map;
 
@@ -41,9 +43,17 @@ public class ApiRestController {
 //        return petService.findByOwnerId(ownerId);
 //    }
 //
-    @GetMapping("/test")
-    public void test(HttpSession httpSession) {
-        System.out.println("httpSession = " + httpSession.getId());
+    @PostMapping("/test")
+    public ResponseEntity<String> test(HttpSession httpSession, @Valid @RequestBody TestBean testBean) {
+        System.out.println("testBean = " + testBean);
+        return new ResponseEntity<>(httpSession.getId(), HttpStatus.OK);
+    }
+
+    @PostMapping("/test2")
+    public ResponseEntity<String> test2(HttpSession httpSession, @Valid TestBean testBean) {
+//        throw new CustomerException(1000, "測試");
+        System.out.println("testBean = " + testBean);
+        return new ResponseEntity<>(httpSession.getId(), HttpStatus.OK);
     }
 
     @PostMapping("/imgUpload")
