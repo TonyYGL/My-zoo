@@ -60,4 +60,17 @@ public class AdoptService {
                 .filter(adoptVo -> !"".equals(adoptVo.getAlbumFile()))
                 .collect(Collectors.toList());
     }
+
+    public AdoptVo getAdoptDetail(int id) {
+        Set<Object> adoptSet = redisUtil.rangeZSetByScore(ADOPT_KEY, id, id);
+        List<AdoptVo> list = adoptSet.stream()
+                .map(o -> (AdoptVo) o)
+//                .filter(adoptVo -> !"".equals(adoptVo.getId()))
+                .collect(Collectors.toList());
+        AdoptVo adoptVo = new AdoptVo();
+        if (!list.isEmpty()) {
+            adoptVo = list.get(0);
+        }
+        return adoptVo;
+    }
 }

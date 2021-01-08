@@ -32,6 +32,12 @@ class PetProjectApplicationTests {
 	}
 
 	@Test
+	void testQueryById() {
+		AdoptVo adoptVo = adoptService.getAdoptDetail(26844);
+		System.out.println("adoptVo = " + adoptVo);
+	}
+
+	@Test
 	void userCrudTest() {
 		UserPo userPo = new UserPo();
 		userPo.setName("keng liu");
